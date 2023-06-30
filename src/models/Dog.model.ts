@@ -1,5 +1,13 @@
 import { Table, Model, Column, DataType } from 'sequelize-typescript';
 
+
+export interface IDogAttributes {
+  name: string
+  color: string
+  tailLength: number
+  weight: number
+}
+
 @Table({
   timestamps: false,
   tableName: 'dogs'

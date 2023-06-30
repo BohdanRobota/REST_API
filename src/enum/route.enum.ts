@@ -6,10 +6,6 @@ export enum dogsApiLink {
   UPDATE = '/dog/:id'
 }
 
-export enum apiRoot {
-  ROOT = '/api'
-}
-
 export enum pingApi {
   PING = '/ping'
 }

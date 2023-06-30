@@ -1,5 +1,6 @@
 import { Sequelize, SequelizeOptions } from "sequelize-typescript";
 import { models } from "../models";
+import ApiError from "../error/ApiError";
 
 const sequelizeOptions: SequelizeOptions = {
   dialect: 'postgres',
@@ -19,7 +20,7 @@ const connectDB = async () => {
     console.log('PostgreSQL Connected...');
   } catch (err) {
     if (err instanceof Error) {
-      console.error(err.message);
+      throw ApiError.dbConnection('Failed to database connection')
     }
     process.exit(1);
   }

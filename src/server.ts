@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import AppRouter from './routes';
 import connectDB from './config/database';
+import { errorHandler } from './middlewares/ErrorHandling.middleware';
 
 const app = express();
 const router = new AppRouter(app);
@@ -25,10 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 router.init();
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 const port = app.get('port');
-// eslint-disable-next-line no-console
 const server = app.listen(port, () => console.log(`Server started on port ${port}`));
 
 export default server;

@@ -1,6 +1,6 @@
 import { Application } from 'express';
 import dogsRouter from './api/dogs.route';
-import { apiRoot, pingApi } from '../enum/route.enum';
+import { pingApi } from '../enum/route.enum';
 
 
 class AppRouter {
@@ -10,7 +10,7 @@ class AppRouter {
     this.app.get(pingApi.PING, (_req, res) => {
       res.send('Dogshouseservice.Version1.0.1');
     });
-    this.app.use(apiRoot.ROOT, dogsRouter);
+    this.app.use(dogsRouter);
   }
 }
 

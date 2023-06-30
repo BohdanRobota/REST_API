@@ -6,8 +6,13 @@ export class DogsController {
   constructor(private dogsService: typeof DogsService) { }
 
   async getAll(req: Request, res: Response) {
-    const dogs = await this.dogsService.getAll();
-    res.send(dogs);
+    try {
+      const { limit, pageNumber, attribute, order } = req.query;
+      const dogs = await this.dogsService.getAll(limit as string, pageNumber as string, attribute as string, order as string);
+      res.send(dogs);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async getById(req: Request, res: Response) {
